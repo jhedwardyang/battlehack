@@ -20,8 +20,6 @@ var insert = function(req, res){
 
 	request('http://ahri.walnutio.com/geocode.php?addr=' + companyaddress, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			body = body.substring(5, body.length-6);
-
 			body = JSON.parse(body);
 
 			var lat = body.lat;
