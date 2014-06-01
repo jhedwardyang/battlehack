@@ -1,8 +1,51 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background:#ffffff;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	margin:20px 40px;
 }
-
+td {
+	padding:0 10px;
+}
+.header{
+	width:600px;
+}
+.wrap{
+	margin:0 auto;
+	width:600px;
+}
+.wrapper{
+	margin:0 auto;
+	width:600px;
+}
+.spacer{
+	height:50px;
+}
+.title{
+	padding-top:5px;
+	padding-left:40px;
+}
 a {
   color: #00B7FF;
 }
+
+.menu {
+	display:inline-block;
+	width:100%;
+}
+
+.option {
+	width: 230px;
+	text-align:center;
+	margin-left:40px;
+}
+
+input {
+	width:270px;
+}
+
+.form {
+	margin-left:50px;
+}
+
+div {float:left;}
