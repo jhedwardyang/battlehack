@@ -4,10 +4,12 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+
+var test = require('./routes/test');
+var supplier = require('./routes/supplier');
+var distributor = require('./routes/distributor');
 
 var app = express();
 
@@ -29,6 +31,11 @@ if ('development' == app.get('env')) {
 }
 
 app.use('/', express.static(path.join(__dirname, '../public')));
+
+app.post('/test', test.test);
+
+app.post('/supplier/new', supplier.insert);
+app.post('/distributor/new', distributor.insert);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
