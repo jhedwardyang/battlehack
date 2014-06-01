@@ -10,6 +10,7 @@ var path = require('path');
 var test = require('./routes/test');
 var supplier = require('./routes/supplier');
 var distributor = require('./routes/distributor');
+var analysis = require('./routes/analysis');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.post('/test', test.test);
 
 app.post('/supplier/new', supplier.insert);
 app.post('/distributor/new', distributor.insert);
+app.post('/analysis/cluster', analysis.cluster);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

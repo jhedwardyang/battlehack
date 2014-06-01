@@ -30,7 +30,7 @@ var insert = function(req, res){
 
 			var newDistributor = new DistributorModel({
 				contactname: contactname,
-				companyname: contactname,
+				companyname: companyname,
 				companyaddress: addr,
 				phonenumber: "2267899264",
 				lat: lat,

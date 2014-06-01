@@ -11,8 +11,8 @@ var DistributorSchema = new Schema({
 	lat	 				: { type: Number, required: true },
 	lng	 				: { type: Number, required: true },
 	active				: { type: Boolean, default: true },
-	created_on  : { type : Date, default : Date.now },
-	updated_on  : { type : Date, default : Date.now }
+	created_on  		: { type : Date, default : Date.now },
+	updated_on  		: { type : Date, default : Date.now }
 });	
 
 module.exports = mongoose.model('Distributor', DistributorSchema);
