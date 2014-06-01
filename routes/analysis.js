@@ -91,6 +91,8 @@ var cluster = function(req, res){
 					clusters
 				));
 
+				var orderedCluster = orderCluster(cluster);
+
 				res.end();
 			});
 		});
@@ -130,8 +132,55 @@ var buildClusters = function(dist, supp, inactive) {
 	return clusters;
 };
 
+var orderCluster = function(orig) {
+	for (var i = 0; i < orig['banks'].length; i++) {
+		var set = orig['locations']['routes'][i];
+		var chosenSet = [];
+		var cur = orig['banks'][i];
+
+		for (var j = 0; j < set.length; j++){
+			var minInd = -1;
+			var minVal = 999999999;
+
+			for(var k = 0; k < set.length; k++){
+				if(chosenSet.indexOf(k) >= 0) continue;
+
+				if(minVal > findDist(set[k]['lat'], set[k]['lng'], cur['lat'], cur['lng'])) {
+					minInd = k;
+					minVal = findDist(set[k]['lat'], set[k]['lng'], cur['lat'], cur['lng']);
+				}
+			}
+
+			for(var k = 0; k < set.length; k++){
+				if(chosenSet.indexOf(k) >= 0) continue;
+
+				var tolerance = 2;
+				var base = findDist(set[minInd]['lat'], set[minInd]['lng'], cur['lat'], cur['lng']);
+
+				var area = Math.abs(findArea(cur['lat'], cur['lng'], set[minInd]['lat'], set[minInd]['lng'], set[k]['lat'], set[k]['lng']));
+
+				if(area > (base * base * tolerance)) minInd = k;
+			}
+
+			chosenSet.push(minInd);
+			cur = set[minInd];
+		}
+	}
+}
+
+
 var findDist = function(x, y, xx, yy) {
 	return Math.sqrt(((x - xx) * (x - xx)) + ((y - yy) * (y - yy)));
+}
+
+// technically 2 x area
+var findArea = function(x, y, xx, yy, xxx, yyy) {
+	return (x * yy) +
+		   (xxx * y) +
+		   (xx * yyy) -
+		   (xxx * yy) -
+		   (xx * y) -
+		   (x * yyy);
 }
 
 exports.cluster = cluster;
