@@ -4,16 +4,32 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="js/utility.js"></script>
 		<script src="js/supplier.js"></script>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	</head>
 
 	<body>
-		I am a Restaurant/Supermarket.<br/>
-		<br/>
-		Contact Name: <input id="contactname" type="text" /><br/>
-		Company Name: <input id="companyname" type="text" /><br/>
-		Company Address: <input id="companyaddress" type="text" /><br/>
-		Phone Number: <input id="phonenumber" type="text" /><br/>
-		<br/>
-		<button id="submit" type="button">Submit</button>
+    
+    	<div class="wrapper">
+            <div class="header">
+                <div><img src="images/logo.png" height="80px"></div>
+                <div class="title"><h1>Adminitration Panel</h1></div>
+    		</div>
+            <div class="spacer"></div>
+            <div class="wrap">
+                <div class="header"><h2>Supplier</h2></div>
+                
+                <div class="form">
+                	<table>
+                        <tr><td>Contact Name: </td><td><input id="contactname" type="text" /></td></tr>
+                        <tr><td>Company Name: </td><td><input id="companyname" type="text" /></td></tr>
+                        <tr><td>Company Address: </td><td><input id="companyaddress" type="text" /></td></tr>
+                        <tr><td>Phone Number: </td><td><input id="phonenumber" type="text" /></td></tr>
+                    </table>
+                    <br/>
+                    <button id="submit" type="button">Submit</button>
+                </div>
+            </div>
+        </div>
+
 	</body>
 </html>
